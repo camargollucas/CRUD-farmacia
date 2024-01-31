@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -43,10 +44,11 @@ public class CategoriasController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
-	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<Categorias>> getByTitle(@PathVariable String genero) {
+	@GetMapping("/tipo")
+	public ResponseEntity<List<Categorias>> getByTitle(@RequestParam("tipo") String genero) {
 		return ResponseEntity.ok(categoriasRepository.findAllByTipoContainingIgnoreCase(genero));
 	}
+	
 
 	@PostMapping
 	public ResponseEntity<Categorias> post(@Valid @RequestBody Categorias categorias) {

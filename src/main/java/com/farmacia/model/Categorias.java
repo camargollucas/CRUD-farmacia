@@ -1,5 +1,7 @@
 package com.farmacia.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -26,6 +28,7 @@ public class Categorias {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categorias")
+	private List<Produtos> produtos;
 
 	public Long getId() {
 		return id;
@@ -41,6 +44,14 @@ public class Categorias {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<Produtos> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produtos> produtos) {
+		this.produtos = produtos;
 	}
 
 }
