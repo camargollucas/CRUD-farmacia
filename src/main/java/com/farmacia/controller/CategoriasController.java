@@ -45,8 +45,8 @@ public class CategoriasController {
 	}
 
 	@GetMapping("/tipo")
-	public ResponseEntity<List<Categorias>> getByTitle(@RequestParam("tipo") String genero) {
-		return ResponseEntity.ok(categoriasRepository.findAllByTipoContainingIgnoreCase(genero));
+	public ResponseEntity<List<Categorias>> getByTitle(@RequestParam("tipo") String tipo) {
+		return ResponseEntity.ok(categoriasRepository.findAllByTipoContainingIgnoreCase(tipo));
 	}
 	
 
